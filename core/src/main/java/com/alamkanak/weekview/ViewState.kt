@@ -338,7 +338,10 @@ internal class ViewState {
             currentOrigin.x += dayWidth * difference * factor
         }
 
-        currentOrigin.x = currentOrigin.x.coerceIn(minimumValue = minX, maximumValue = maxX)
+        currentOrigin.x = if (isLtr)
+            currentOrigin.x.coerceIn(minimumValue = minX, maximumValue = maxX)
+        else
+            currentOrigin.x.coerceIn(minimumValue = maxX, maximumValue = minX)
         navigationListener.onHorizontalScrollingFinished()
     }
 
