@@ -1,6 +1,7 @@
 package com.alamkanak.weekview
 
 import android.graphics.Canvas
+import android.text.Layout
 import android.text.StaticLayout
 import android.util.SparseArray
 
@@ -89,7 +90,8 @@ internal class TimeColumnRenderer(
         val textLayouts = mutableListOf<StaticLayout>()
 
         for (hour in displayedHours) {
-            val textLayout = timeFormatter(hour).toTextLayout(timeColumnTextPaint, width = Int.MAX_VALUE)
+            val alignment = if (timeFormatter(hour).isArabic()) Layout.Alignment.ALIGN_OPPOSITE else Layout.Alignment.ALIGN_NORMAL
+            val textLayout = timeFormatter(hour).toTextLayout(timeColumnTextPaint, width = Int.MAX_VALUE, alignment = alignment)
             textLayouts += textLayout
             timeLabelLayouts.put(hour, textLayout)
         }

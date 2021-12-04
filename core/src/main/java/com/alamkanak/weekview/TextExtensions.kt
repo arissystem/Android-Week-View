@@ -51,3 +51,13 @@ internal fun ViewState.getTextPaint(event: ResolvedWeekViewEntity): TextPaint {
     }
     return textPaint
 }
+
+internal fun String.isArabic(): Boolean {
+    var i = 0
+    while (i < this.length) {
+        val c = this.codePointAt(i)
+        if (c in 0x0600..0x06E0) return true
+        i += Character.charCount(c)
+    }
+    return false
+}
