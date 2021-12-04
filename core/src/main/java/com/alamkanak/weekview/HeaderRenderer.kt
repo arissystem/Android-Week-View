@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
+import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
 import android.util.SparseArray
@@ -127,7 +128,8 @@ private class HeaderUpdater(
             date.isWeekend -> viewState.weekendHeaderTextPaint
             else -> viewState.headerTextPaint
         }
-        return dayLabel.toTextLayout(textPaint = textPaint, width = viewState.dayWidth.toInt())
+        val alignment = if (dayLabel.isArabic()) Layout.Alignment.ALIGN_CENTER else Layout.Alignment.ALIGN_NORMAL
+        return dayLabel.toTextLayout(textPaint = textPaint, width = viewState.dayWidth.toInt(), alignment = alignment)
     }
 
     private fun <E> SparseArray<E>.hasKey(key: Int): Boolean = indexOfKey(key) >= 0
@@ -173,8 +175,9 @@ private class DateLabelsDrawer(
         val key = date.toEpochDays()
         val textLayout = dateLabelLayouts[key]
 
+        val offset = if (textLayout.text.toString().isArabic()) 0f else viewState.dayWidth / 2f
         withTranslation(
-            x = startPixel + viewState.dayWidth / 2f,
+            x = startPixel + offset,
             y = viewState.headerPadding,
         ) {
             draw(textLayout)
