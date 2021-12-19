@@ -137,11 +137,7 @@ internal class EventChipDrawer(
     ) {
         val bounds = eventChip.bounds
 
-        val horizontalOffset = if (viewState.isLtr) {
-            bounds.left + viewState.eventPaddingHorizontal
-        } else {
-            bounds.right - viewState.eventPaddingHorizontal
-        }
+        val horizontalOffset = bounds.left + viewState.eventPaddingHorizontal
 
         val verticalOffset = if (eventChip.event.isAllDay) {
             (bounds.height() - textLayout.height) / 2f
