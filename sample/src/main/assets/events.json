@@ -220,7 +220,7 @@
         "is_all_day": false
     },
     {
-        "title": "Event 23",
+        "title": "رویداد 23",
         "location": "Location 23",
         "day_of_month": 6,
         "start_time": "00:00",
@@ -290,8 +290,8 @@
         "is_all_day": false
     },
     {
-        "title": "Event 30",
-        "location": "Location 30",
+        "title": "مرور اسپرینت 37",
+        "location": "لوکیشن ۳۰",
         "day_of_month": 6,
         "start_time": "06:00",
         "duration": 120,
@@ -340,11 +340,11 @@
         "is_all_day": false
     },
     {
-        "title": "Event 35",
-        "location": "Location 35",
+        "title": "ارسال تایم شیت",
+        "location": "",
         "day_of_month": 6,
-        "start_time": "01:00",
-        "duration": 120,
+        "start_time": "07:30",
+        "duration": 15,
         "color": "#F8B552",
         "is_canceled": false,
         "is_all_day": false

@@ -141,26 +141,7 @@ private class DateLabelsDrawer(
 ) : Drawer {
 
     override fun draw(canvas: Canvas) {
-        if (viewState.numberOfVisibleDays > 1) {
             canvas.drawDateLabelInMultiDayView()
-        } else {
-            canvas.drawDateLabelInSingleDayView()
-        }
-    }
-
-    private fun Canvas.drawDateLabelInSingleDayView() {
-        val bounds = viewState.weekNumberBounds
-        val date = viewState.dateRange.first()
-
-        val key = date.toEpochDays()
-        val textLayout = dateLabelLayouts[key]
-
-        withTranslation(
-            x = bounds.centerX(),
-            y = viewState.headerPadding,
-        ) {
-            draw(textLayout)
-        }
     }
 
     private fun Canvas.drawDateLabelInMultiDayView() {

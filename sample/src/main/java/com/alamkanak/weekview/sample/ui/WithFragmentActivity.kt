@@ -61,6 +61,10 @@ class WeekFragment : Fragment(R.layout.fragment_week) {
         viewModel.viewState.observe(viewLifecycleOwner) { viewState ->
             adapter.submitList(viewState.entities)
         }
+
+        binding.weekView.setDateFormatter {
+            "سه‌شنبه\n۱۲/۰۸"
+        }
     }
 
     companion object {
