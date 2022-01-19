@@ -16,6 +16,19 @@ internal fun Canvas.draw(staticLayout: StaticLayout) {
     staticLayout.draw(this)
 }
 
+internal fun Canvas.drawRtl(staticLayout: StaticLayout) {
+    staticLayout.text.split("\n").forEachIndexed { index, text ->
+        val textPaint = staticLayout.paint
+        val xPos: Int = staticLayout.width / 2
+        drawText(
+            text,
+            xPos.toFloat(),
+            ((staticLayout.height / 2) * (index + 1) - (textPaint.descent() + textPaint.ascent()) / 2),
+            textPaint
+        )
+    }
+}
+
 internal fun Canvas.drawVerticalLine(
     horizontalOffset: Float,
     startY: Float,

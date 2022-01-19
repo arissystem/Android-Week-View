@@ -173,11 +173,16 @@ private class DateLabelsDrawer(
         val key = date.toEpochDays()
         val textLayout = dateLabelLayouts[key]
 
+        val offset = if (textLayout.text.toString().isArabic()) 0f else viewState.dayWidth / 2f
         withTranslation(
-            x = startPixel + viewState.dayWidth / 2f,
+            x = startPixel + offset,
             y = viewState.headerPadding,
         ) {
-            draw(textLayout)
+            if (textLayout.text.toString().isArabic()) {
+                drawRtl(textLayout)
+            } else {
+                draw(textLayout)
+            }
         }
     }
 }
