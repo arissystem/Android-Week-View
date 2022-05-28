@@ -1258,7 +1258,7 @@ class WeekView @JvmOverloads constructor(
             return
         }
 
-        navigator.scrollHorizontallyTo(date = adjustedDate) {
+        navigator.scrollHorizontallyTo(date = adjustedDate, hasAnimation = false) {
             onComplete(adjustedDate)
         }
     }
